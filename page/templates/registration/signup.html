@@ -1,3 +1,4 @@
+{% load crispy_forms_tags %}
 {% load static %}
 <!doctype html>
 <html lang="en">
@@ -5,67 +6,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <title>Rental System | Sign_up</title>
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Rental System | SignUp</title>
 
-    <link rel ="stylesheet" href="{% static 'css/floating-labels.css' %}" >
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/floating-labels/">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" >
 
-    <!-- Favicons -->
-    <link rel='icon' href="{% static 'img/images.png' %}">
-    
+ <!-- Favicons -->
+ <link rel='icon' href="{% static 'img/images.png' %}">
+
   </head>
   <body>
+    <div class="container" style="width: 50%;">
+      <h1 style="text-align: center;">Register New User </h1><br/>
+<form method="POST">
+  
+  {% csrf_token %}
 
-    <form class="form-signin" method="POST" action="register">
-      {% csrf_token %}
-  <div class="text-center mb-4">
-   
-    <a href="/" type="button" class="btn btn-success btn-sm float-right">Home</a>
-    <img src="{% static 'img/reg.jpg' %}" class="rounded mx-auto d-block" alt="..." width="30%" height="100%">
-    <!-- <img class="mb-4 mx-auto d-block"  alt="" > -->
-    <h1 class="h3 mb-3 font-weight-normal">Register</h1>
-    <p>Register your account</p>
-  </div>
+  {{ form|crispy }}
+  <button class="btn btn-success mb-4" type="submit" >Sign Up</button>
 
-  <div class="form-label-group">
-    <input type="text" name='fname' class="form-control" placeholder="FirstName" required autofocus>
-    <label for="User Name">FirstName</label>
-  </div>
-
-  <div class="form-label-group">
-    <input type="text" name='lname'  class="form-control" placeholder="LastName" required>
-    <label for="Last Name">LastName</label>
-  </div>
-
-  <div class="form-label-group">
-    <input type="text" name='uname'  class="form-control" placeholder="UserName" required>
-    <label for="username">UserName</label>
-  </div>
-
-  <div class="form-label-group">
-    <input type="email" name='email'  class="form-control" placeholder="Email" required>
-    <label for="Email">Email</label>
-  </div>
-
-  <div class="form-label-group">
-    <input type="password" name='pwd1'  class="form-control" placeholder="Password" required>
-    <label for="inputPassword">Password</label>
-  </div>
-
-  <div class="form-label-group">
-    <input type="password" name='pwd2' class="form-control" placeholder="Confirm Password" required>
-    <label for="inputPassword">Confirm Password</label>
-  </div>
-
-  <div class="checkbox mb-2">
-    <label>
-      <input type="checkbox" value="remember-me"> Remember me
-    </label>
-  </div>
-  <button class="btn btn-lg btn-success btn-block" type="submit">Register</button>
-  <p class="mt-5 mb-3 text-muted text-center">&copy; 2020</p>
 </form>
+</div>
 </body>
 </html>
