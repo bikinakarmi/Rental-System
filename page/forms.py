@@ -11,4 +11,4 @@ class SignupForm(UserCreationForm):
 class PropertyForm(forms.ModelForm):
     class Meta:
         model = Property
-        fields = ('title', 'description', 'location', 'picture','price', 'area', 'property_type')
+        fields = ('title', 'description', 'location', 'picture','price', 'area', 'property_type','reg_agent')

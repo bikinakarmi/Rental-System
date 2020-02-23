@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block css %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock css %}
+{% block main %}
+<div class='container mt-3 mr-5 bg-light'>
+
+    <div class="container">
+        <h5 class="bg-secondary text-center ">{{object.name}}</h5>
+      <div class="row mt-5">
+        <div class="col-md-8">
+          {% if object.picture %}
+            <img src="{{object.picture.url}}" height="400px" width="100%"/>
+          {% endif %}
+              <h3 class=" text-right">Price:{{object.price}}
+        </div>
+        <div class="col-md-4 text-center">
+            <p class="text-center">{{object.description}}</p>
+            {% if property.reg_agent.id == user.id %}
+            <a href="{% url 'property_edit' object.id %}" ><button type="button" class="btn btn-sm btn-secondary">Edit</button></a>
+            {% endif %}
+            {% if property.reg_agent.id == user.id %}
+            <button type="button" class="btn btn-sm btn-danger" id="btn_delete">Delete</button>
+            {% endif %}
+            <form method='POST' action="{% url 'property_delete' object.id %}" id='delete_form'>
+              {% csrf_token %}
+                  <input type="hidden" value="">
+            </form>
+
+            <small class="mt-2"><strong>Created @ {{object.date_created | date}}</strong></small>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extrajs%}
+<script>
+  $('#btn_delete').on('click',function(){
+    ans = confirm('Are you sure you want to delete?');
+    if (ans == true){
+      $('#delete_form').submit();
+    } else{
+      return false;
+    }
+
+  })
+
+</script>
+{% endblock %}

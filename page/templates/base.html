@@ -16,6 +16,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'css/album.css' %}" rel="stylesheet">
+    {% block extracss%}{% endblock %}
   </head>
   <body>
     
@@ -27,5 +28,6 @@
     {% include  'components/footer.html' %}
       <script src="{% static 'js/jquery-3.4.1.slim.min.js' %}"></script>
       <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+      {% block extrajs%}{% endblock %}
   </body>
 </html>
